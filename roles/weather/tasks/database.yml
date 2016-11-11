@@ -1,0 +1,35 @@
+---
+# Set up and populate the database
+- name: Fetch necessary packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - unzip
+    - python-mysqldb
+
+- name: Fetch the Zipcode data
+  unarchive:
+    src: http://download.geonames.org/export/zip/{{ country }}.zip
+    dest: /tmp
+    copy: no
+
+- name: Create the DB User
+  mysql_user:
+    name: "{{ weather_db_user }}"
+    host: localhost
+    login_user: root
+    state: present
+
+- name: Run the custom weather db module
+  weather_db:
+    user: "{{ weather_db_user }}"
+    src: "/tmp/{{ country }}.txt"
+    dest: "/tmp/zipcodes.sql"
+
+- name: Add the Geoname (zipcode to long/lat) database
+  mysql_db:
+    name: all
+    single_transaction: yes
+    state: import
+    target: /tmp/zipcodes.sql  

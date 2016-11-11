@@ -1,0 +1,8 @@
+---
+- name: Place Python CGI script
+  copy:
+    src: weather.py
+    dest: "{{ site_dir }}/index.py"
+    mode: 0775
+    owner: root
+    group: www-data

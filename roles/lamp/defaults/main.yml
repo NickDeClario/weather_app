@@ -1,0 +1,5 @@
+---
+# defaults file for lamp
+packages: []
+services: []
+site_dir: "/var/www"

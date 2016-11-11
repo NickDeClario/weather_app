@@ -1,0 +1,4 @@
+---
+# vars file for weather
+site_dir_name: "weather"
+site_dir: "/var/www/{{ site_dir_name }}"

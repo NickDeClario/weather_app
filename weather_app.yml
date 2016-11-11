@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: true
+  connection: local
+  become: yes
+  vars:
+    - upgrade: "false"
+
+  roles:
+  - lamp
+  - { role: weather, country: "US" }

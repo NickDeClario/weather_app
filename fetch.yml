@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+    - country: "US"
+  tasks:
+  - name: Fetch the Zipcode data
+    unarchive:
+      src: http://download.geonames.org/export/zip/{{ country }}.zip
+      dest: /tmp
+      copy: no

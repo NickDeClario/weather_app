@@ -1,0 +1,25 @@
+---
+- name: Create Site Directory 
+  file:
+    dest: "{{ site_dir }}/cgi-bin"
+    state: directory
+    recurse: yes
+    mode: 0775
+    owner: root
+    group: www-data
+    
+- name: Add Apache Site Config
+  template:
+     dest: /etc/apache2/sites-available/weather.conf
+     src: apache_weather_site.j2
+     mode: 0644
+     owner: root
+     group: root
+
+- name: Disable default website
+  command: a2dissite 000-default
+  notify: Restart Apache
+
+- name: Enable "{{ site_dir_name }}" site
+  command: a2ensite weather
+  notify: Restart Apache

@@ -1,0 +1,30 @@
+body {
+    font-family:'Bitstream Vera Sans','DejaVu Sans',Tahoma,sans-serif;
+    font-size:12px; 
+    background-color: #ffffff;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+div { margin: 5px; }
+
+table {
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.currentWeatherImg {
+    margin: 0 100px 10px 50px;
+}
+
+.currentWeatherTemp {
+    font-weight: bold;
+    margin: 0 100px 0 0;
+    float: left;
+}
+

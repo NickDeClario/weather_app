@@ -1,0 +1,5 @@
+---
+# tasks file for weather
+- include: site.yml
+- include: database.yml
+- include: app.yml
