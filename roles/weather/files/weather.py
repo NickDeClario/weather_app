@@ -72,6 +72,9 @@ def formatResults(data):
     content = "Multiple search results; choose location:"
     content += "<ul>\n"
 
+    if not os.environ.get('HTTP_REFERER'):
+        return ""
+
     url = re.sub(r"\?zip.*$", "", os.environ['HTTP_REFERER'])
     for result in data:
         content += '<li><a href="%s?zipcode=%s">%s - %s, %s</a></li>\n' % (url, result[1], result[1], result[2], result[3])

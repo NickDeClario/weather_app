@@ -10,11 +10,16 @@
     
 - name: Add Apache Site Config
   template:
-     dest: /etc/apache2/sites-available/weather.conf
-     src: apache_weather_site.j2
-     mode: 0644
-     owner: root
-     group: root
+    dest: /etc/apache2/sites-available/weather.conf
+    src: apache_weather_site.j2
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Make sure Apache port is enabled
+  lineinfile:
+    dest: /etc/apache2/ports.conf
+    line: "Listen {{ weather_port }}"
 
 - name: Disable default website
   command: a2dissite 000-default
