@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
-<VirtualHost *:80>
+<VirtualHost *:{{ weather_port }}>
    ServerAdmin webmaster@{{ ansible_hostname }}
    DocumentRoot {{ site_dir }}
 

@@ -3,5 +3,6 @@
 country: "US"
 skip_db: false
 weather_db_user: "weather_user"
+weather_port: "80"
 site_dir_name: "weather"
 site_dir: "/var/www/{{ site_dir_name }}"
